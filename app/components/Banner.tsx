@@ -3,6 +3,7 @@ import type { ComponentProps } from "react"
 import { Badge } from "~/components/Badge"
 import { Button } from "~/components/Button"
 import { Container } from "~/components/Container"
+import { posthog } from "~/services.server/posthog"
 import { BANNER_SPONSOR } from "~/utils/constants"
 import { cx } from "~/utils/cva"
 
@@ -22,7 +23,12 @@ export const Banner = ({ className, ...props }: ComponentProps<typeof Container>
       asChild
       {...props}
     >
-      <Link to={sponsor.website} target="_blank" rel="noopener noreferrer">
+      <Link
+        to={sponsor.website}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={() => posthog.capture("banner_clicked", { url: sponsor.website })}
+      >
         <Badge variant="outline" className="max-sm:order-last">
           Ad
         </Badge>
