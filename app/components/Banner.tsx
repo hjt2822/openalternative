@@ -3,7 +3,7 @@ import type { ComponentProps } from "react"
 import { Badge } from "~/components/Badge"
 import { Button } from "~/components/Button"
 import { Container } from "~/components/Container"
-import { posthog } from "~/services.server/posthog"
+import { posthog } from "posthog-js"
 import { BANNER_SPONSOR } from "~/utils/constants"
 import { cx } from "~/utils/cva"
 
